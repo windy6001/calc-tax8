@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2024 Windy
+    Released under the MIT license
+-->
+
+<meta charset="UTF-8">
+<html><body>
+    <style>
+    button
+    {
+        width: 70px;
+        height: 70px;
+        font-size: 2em;
+        margin: 8px;
+    }
+    </style>
+    <h1>消費税計算機 (8%)</h1>
+
+    <div style="font-size:2em">
+        <div id="area1"> 税込:</div>
+        税抜:<input style="text-align: right; max-width: 180px; font-size:1em" ><br />
+    </div>
+
+    <script>
+    // **********************************************
+    //          数字ボタンが押された
+    // **********************************************
+    function update( v )
+    {
+        document.querySelector( 'input' ).value = v
+    }
+
+    // **********************************************
+    //          数字ボタンが押された
+    // **********************************************
+    function append( v )
+    {
+        document.querySelector( 'input' ).value += v   // 後ろに追加
+        calcTax()           // 数字ボタンが押されるたびに、計算する
+    }
+
+
+    // **********************************************
+    //          税込計算する
+    // **********************************************
+    function calcTax()
+    {
+        const v= document.querySelector( 'input' ).value
+        document.getElementById('area1').innerText = "税込:"+ String( v* 1.08)
+    }
+
+    </script>
+    <button onclick="append( '7' )" >7</button>
+    <button onclick="append( '8' )" >8</button>
+    <button onclick="append( '9' )" >9</button>
+    <br>
+    <button onclick="append( '4' )" >4</button>
+    <button onclick="append( '5' )" >5</button>
+    <button onclick="append( '6' )" >6</button>
+    <br>
+    <button onclick="append( '1' )" >1</button>
+    <button onclick="append( '2' )" >2</button>
+    <button onclick="append( '3' )" >3</button>
+    <br>
+    <button onclick="append( '0' )" style="width:150px;">0</button>
+    <br>
+    <br />
+    <button onclick="update( '' ) " style="width:170px;" >クリア</button>
+
+<br>
+使い方:<br>
+数字ボタンを押して、数字を入力してください。<br>
+入力するたびに、消費税(8%)込みの金額が表示されます。<br>
+クリアボタンを押すと、消してやり直すことができます。<br>
+（キーボードでの入力には対応していません。）
+
+</body></html>
+
+
